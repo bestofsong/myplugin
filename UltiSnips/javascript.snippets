@@ -1,0 +1,39 @@
+snippet moduleexports
+module.exports = ${1:expression}
+endsnippet
+
+snippet exports.
+exports.${1:name} = ${2:expression}
+endsnippet
+
+snippet exportdefault
+export default ${1:expression}
+endsnippet
+
+snippet exportconst
+export const ${1:variable} = ${2:value}
+endsnippet
+
+snippet exportfunction
+export function ${1:func} (${2:arg}) {
+  $0
+}
+endsnippet
+
+snippet exportasyncfunction
+export async function ${1:func} (${2:arg}) {
+  $0
+}
+endsnippet
+
+snippet log
+${1:console.}log('$2', $3)
+endsnippet
+
+snippet warn
+${1:console.}warn('$2', $3)
+endsnippet
+
+snippet consoleerror
+${1:console.}error('$2', $3)
+endsnippet
