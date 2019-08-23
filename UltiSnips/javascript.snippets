@@ -26,15 +26,29 @@ export async function ${1:func} (${2:arg}) {
 }
 endsnippet
 
+snippet func
+${3:async }function ${1:func} (${2:arg}) {
+  $0
+}
+endsnippet
+
 snippet log
 ${1:console.}log('$2', $3)
+endsnippet
+
+snippet info
+${1:console.}info('$2', $3)
 endsnippet
 
 snippet warn
 ${1:console.}warn('$2', $3)
 endsnippet
 
-snippet consoleerror
+snippet table
+${1:console.}table('$2', $3)
+endsnippet
+
+snippet error
 ${1:console.}error('$2', $3)
 endsnippet
 
@@ -60,4 +74,10 @@ endsnippet
 
 snippet letdestructarr
 let [ ${2:prop} ] = ${1:arr}
+endsnippet
+
+snippet reduce
+${1:arr}.reduce((${2:res}, ${3:item}${5:, index}${6:, origArr}) => {
+  $0
+}, ${4:{}})${7:;}
 endsnippet
