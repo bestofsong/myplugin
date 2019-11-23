@@ -1,0 +1,27 @@
+priority 1
+
+snippet argparse
+POSITIONAL=()
+while [ "$#" -gt 0 ] ; do
+  key="\$1"
+  case $key in
+      ${1:-e}|${2:--extension})
+      ${3:EXTENSION}="\$2"
+      shift ; shift
+      ;;
+      -e=*|--extension=*)
+      EXTENSION="${key#*=}"
+      shift
+      ;;
+      --default)
+      DEFAULT=YES
+      shift
+      ;;
+      *)
+      POSITIONAL+=("\$1")
+      shift
+      ;;
+  esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+endsnippet
