@@ -5,7 +5,7 @@ snippet author
 * Author: ${1:`git config --get user.name`}
 * Email : ${2:`git config --get user.email`}
 * Date  : ${3:`date +%Y-%m-%d`}
-* /
+*/
 
 $0
 endsnippet
@@ -16,4 +16,22 @@ endsnippet
 
 snippet fixme
 // FIXME: ${1:`git config --get user.name`} `date +%Y-%m-%d`
+endsnippet
+
+snippet daily
+# 日报 `date +%Y.%m.%d`
+工作内容
+- ${1:job 1}
+
+明日计划
+- ${2:job 1}
+endsnippet
+
+snippet weekly
+# 周报 `date -v-4d +%Y.%m.%d` - `date +%Y.%m.%d`
+工作内容
+- ${1:job 1}
+
+下周计划
+- ${2:job 1}
 endsnippet
