@@ -1,0 +1,11 @@
+nnoremap <leader>] :LspDefinition<CR>
+nnoremap <leader>dc :LspDeclaration<CR>
+nnoremap <leader>hv :LspHover<CR>
+nnoremap <leader>im :LspImplementation<CR>
+nnoremap <leader>en :LspNextDiagnostic<CR>
+nnoremap <leader>ep :LspPreviousDiagnostic<CR>
+nnoremap <leader>rf :LspReferences<CR>
+nnoremap <leader>rn :LspNextReference<CR>
+nnoremap <leader>rp :LspPreviousReference<CR>
+nnoremap <leader>td :LspTypeDefinition<CR>
+nnoremap <leader>fsm :LspWorkspaceSymbol<CR>
