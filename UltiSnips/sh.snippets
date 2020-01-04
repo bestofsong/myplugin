@@ -25,3 +25,15 @@ while [ "$#" -gt 0 ] ; do
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 endsnippet
+
+snippet exportfunc
+if ! declare -F ${1:func_name} >/dev/null ; then
+  $1() {
+    ${2:true}
+  }
+  export -f $1
+else
+  echo "Duplicated func definition, ignoring: $1 @${BASH_SOURCE[0]}:${LINENO}"
+fi
+endsnippet
+
