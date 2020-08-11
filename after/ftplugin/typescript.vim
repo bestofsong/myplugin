@@ -1,1 +1,1 @@
-tsserver.vim
+coc-keybindings.vim
