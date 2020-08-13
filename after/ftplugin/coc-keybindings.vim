@@ -44,9 +44,3 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" nnoremap <leader>] :ALEGoToDefinition<CR>
-" nnoremap <leader>\ :ALEGoToDefinitionInVSplit<CR>
-" nnoremap <leader>rf :ALEFindReferences<CR>
-" nnoremap <leader>hv :ALEHover<CR>
-" nnoremap <leader>fsm :ALESymbolSearch <cword><CR>

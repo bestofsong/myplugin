@@ -36,7 +36,10 @@ fi
 endsnippet
 
 snippet this_file
-this_file="$(type -p "${BASH_SOURCE[0]}")"
+this_file="${BASH_SOURCE[0]}"
+if ! [ -e "$this_file" ] ; then
+  this_file="$(type -p "$this_file")"
+fi
 if ! [ -e "$this_file" ] ; then
   echo "Failed to resolve file."
   exit 1
