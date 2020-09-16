@@ -20,6 +20,10 @@ endsnippet
 
 snippet bash
 #!/usr/bin/env bash
+set -eu pipefail
+shopt -s nullglob
+shopt -s globstar 2>/dev/null || true
+
 endsnippet
 
 snippet daily
