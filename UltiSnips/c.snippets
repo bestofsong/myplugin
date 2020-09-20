@@ -1,10 +1,8 @@
 global !p
 def slug(t):
-    A_CODE = ord('A')
-    Z_CODE = ord('Z')
     ret=''
     for ch in t:
-        if ord(ch) >= A_CODE and ord(ch) <= Z_CODE:
+        if ch >= 'A' and ch <= 'Z':
             ret += '_'
             ret += ch
         elif ch == '.':
@@ -14,11 +12,13 @@ def slug(t):
     return ret
 endglobal
 
-snippet ifndefh
+snippet ifndefheader
 #ifndef ${1:`!p
 snip.rv = slug(snip.fn)
 `}
 #define $1 1
+
 $0
+
 #endif
 endsnippet
