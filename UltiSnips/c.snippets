@@ -1,0 +1,24 @@
+global !p
+def slug(t):
+    A_CODE = ord('A')
+    Z_CODE = ord('Z')
+    ret=''
+    for ch in t:
+        if ord(ch) >= A_CODE and ord(ch) <= Z_CODE:
+            ret += '_'
+            ret += ch
+        elif ch == '.':
+            ret += '_'
+        else:
+            ret += ch.upper()
+    return ret
+endglobal
+
+snippet ifndefh
+#ifndef ${1:`!p
+snip.rv = slug(snip.fn)
+`}
+#define $1 1
+$0
+#endif
+endsnippet
