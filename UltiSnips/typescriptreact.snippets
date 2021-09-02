@@ -1,0 +1,77 @@
+snippet classextendscomponent "react class exported (with prop and state interfaces)" b
+import React, { Component } from "react"
+
+export interface $1Props {
+}
+
+export interface $1State {
+}
+
+export default class ${1} extends Component<$1Props, $1State> {
+  constructor(props: $1Props) {
+    super(props)
+    this.state = {}
+  }
+
+  public render() {
+    return (${2:null}$0)
+  }
+}
+endsnippet
+
+
+snippet functionreactelement "function component default export (with prop interface)" b
+import React, { ReactElement } from "react"
+
+export interface $1Props {
+  $3
+}
+
+export default function ${1:App}(${2:props}: $1Props): ReactElement | null {
+  return (
+      ${4:null}$0
+      )
+}
+endsnippet
+
+snippet componentDidMount "component did mount" b
+public componentDidMount() {
+	$1
+}
+endsnippet
+
+snippet shouldComponentUpdate "should component update" b
+public shouldComponentUpdate(nextProps: ${1}Props, nextState: $1State) {
+	return ${1:true}$0
+}
+endsnippet
+
+snippet getSnapshotBeforeUpdate "get snapshot before update" b
+public getSnapshotBeforeUpdate(prevProps: ${1}Props, prevState: $1State) {
+	return ${2:null}$0
+}
+endsnippet
+
+snippet componentdidupdate "component did update" b
+public componentDidUpdate(prevProps: ${1}Props, prevState: $1State, ${2:snapshot: any}) {
+	$3
+}
+endsnippet
+
+snippet componentdidcatch "component did catch" b
+public componentDidCatch(error: Error, info: ErrorInfo) {
+  $1
+}
+endsnippet
+
+
+
+snippet nodeenvdev "process.env.NODE_ENV !== 'production'" w
+process.env.NODE_ENV !== "production"
+endsnippet
+
+snippet nodeenvprod "process.env.NODE_ENV === 'production'" w
+process.env.NODE_ENV === "production"
+endsnippet
+
+
