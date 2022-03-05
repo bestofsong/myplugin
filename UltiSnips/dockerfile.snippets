@@ -1,0 +1,71 @@
+priority 1
+
+snippet author
+/**
+* Author: ${1:`git config --get user.name`}
+* Email : ${2:`git config --get user.email`}
+* Date  : ${3:`date +%Y-%m-%d`}
+*/
+
+$0
+endsnippet
+
+snippet todo
+// TODO: ${1:`git config --get user.name`} `date +%Y-%m-%d`${2: implement}
+endsnippet
+
+snippet fixme
+// FIXME: ${1:`git config --get user.name`} `date +%Y-%m-%d`
+endsnippet
+
+snippet bash
+#!/usr/bin/env bash
+set -eu
+
+endsnippet
+
+snippet daily
+## 日报 `date +%Y.%m.%d`
+## 万松
+工作内容
+- ${1:job 1}
+- ${2:job 2}
+- ${3:job 3}
+
+明日计划
+- ${4:job 4}
+- ${5:job 5}
+- ${6:job 6}
+endsnippet
+
+snippet weekly
+## 周报 `date -v-4d +%Y.%m.%d` - `date +%Y.%m.%d`
+## 万松
+工作内容
+- ${1:job 1}
+- ${2:job 2}
+- ${3:job 3}
+
+下周计划
+- ${4:job 4}
+- ${5:job 5}
+- ${6:job 6}
+endsnippet
+
+snippet localtime
+`env -i date '+%Y-%m-%dT%H:%M:%S%z'`
+endsnippet
+
+snippet utc
+`date -u '+%Y-%m-%dT%H:%M:%S%z'`
+endsnippet
+
+snippet epoch
+`date '+%s'`
+endsnippet
+
+snippet utcAndEpoch
+`date -u '+%Y-%m-%dT%H:%M:%S%z'`
+`date '+%s'`
+endsnippet
+
