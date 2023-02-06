@@ -1,14 +1,60 @@
-priority 1
+snippet from
+# build
+FROM node:17.6.0-alpine as build
 
-snippet author
-/**
-* Author: ${1:`git config --get user.name`}
-* Email : ${2:`git config --get user.email`}
-* Date  : ${3:`date +%Y-%m-%d`}
-*/
+ARG userId=1000
+ARG groupId=1000
 
-$0
+WORKDIR /app/
+
+COPY --chown=${userId}:${groupId} \
+  package.json \
+  .npmrc \
+  package-lock.json \
+  /app/
+
+RUN NODE_ENV=development npm ci
+
+COPY --chown=${userId}:${groupId} \
+  tsconfig.json \
+  webpack.config.js \
+  /app/
+
+COPY --chown=${userId}:${groupId} \
+  bin/ ./bin/
+
+COPY --chown=${userId}:${groupId} \
+  src/ ./src/
+
+RUN NODE_OPTIONS=--openssl-legacy-provider \
+  NODE_ENV=production \
+  bin/build
+
+
+# run
+FROM node:17.6.0-alpine
+
+ARG userId=1000
+ARG groupId=1000
+
+WORKDIR /app/
+
+COPY --chown=${userId}:${groupId} \
+  --from=build \
+  /app/build/main.js \
+  /app/build/main.js.map \
+  ./build/
+
+COPY --chown=${userId}:${groupId} \
+  ormconfig.json \
+  ./
+
+EXPOSE 8080
+
+CMD ["node", "build/main.js"]
+
 endsnippet
+
 
 snippet todo
 // TODO: ${1:`git config --get user.name`} `date +%Y-%m-%d`${2: implement}
@@ -16,56 +62,5 @@ endsnippet
 
 snippet fixme
 // FIXME: ${1:`git config --get user.name`} `date +%Y-%m-%d`
-endsnippet
-
-snippet bash
-#!/usr/bin/env bash
-set -eu
-
-endsnippet
-
-snippet daily
-## 日报 `date +%Y.%m.%d`
-## 万松
-工作内容
-- ${1:job 1}
-- ${2:job 2}
-- ${3:job 3}
-
-明日计划
-- ${4:job 4}
-- ${5:job 5}
-- ${6:job 6}
-endsnippet
-
-snippet weekly
-## 周报 `date -v-4d +%Y.%m.%d` - `date +%Y.%m.%d`
-## 万松
-工作内容
-- ${1:job 1}
-- ${2:job 2}
-- ${3:job 3}
-
-下周计划
-- ${4:job 4}
-- ${5:job 5}
-- ${6:job 6}
-endsnippet
-
-snippet localtime
-`env -i date '+%Y-%m-%dT%H:%M:%S%z'`
-endsnippet
-
-snippet utc
-`date -u '+%Y-%m-%dT%H:%M:%S%z'`
-endsnippet
-
-snippet epoch
-`date '+%s'`
-endsnippet
-
-snippet utcAndEpoch
-`date -u '+%Y-%m-%dT%H:%M:%S%z'`
-`date '+%s'`
 endsnippet
 

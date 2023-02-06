@@ -59,3 +59,25 @@ done
 this_dir="$(dirname "$this_file")"
 endsnippet
 
+snippet bash
+#!/usr/bin/env bash
+set -eu
+
+endsnippet
+
+snippet localtime
+`env -i date '+%Y-%m-%dT%H:%M:%S%z'`
+endsnippet
+
+snippet utc
+`date -u '+%Y-%m-%dT%H:%M:%S%z'`
+endsnippet
+
+snippet epoch
+`date '+%s'`
+endsnippet
+
+snippet utcAndEpoch
+`date -u '+%Y-%m-%dT%H:%M:%S%z'`
+`date '+%s'`
+endsnippet
