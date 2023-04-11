@@ -37,7 +37,7 @@ endsnippet
 
 snippet this_file
 resolve_link() {
-  local the_link=$1
+  local the_link=\$1
   local ls_res=
   local link_target=
   while [ -h "$the_link" ] ; do
